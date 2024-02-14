@@ -2,7 +2,7 @@ import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
-import bodyParser from 'body-parser';
+import bcrypt from 'bcrypt';
 const router = Router();
 
 dotenv.config();
@@ -25,9 +25,12 @@ router.post('/register', async (req, res) => {
             return res.status(400).send('User already exists');
         }
 
+        let hashedPassword = await bcrypt.hash(req.body.password, 10);
+
         const newUser = await prisma.user.create({
             data: {
                 username: req.body.username,
+                password: hashedPassword,
                 email: req.body.email,
                 bio: req.body.bio
             }
@@ -38,7 +41,7 @@ router.post('/register', async (req, res) => {
             username: newUser.username
         };
         const token = jwt.sign(data, jwtSecretKey); 
-        res.send(token);
+        return res.json({token, newUser});
     } catch (error) {
         console.error('Error registering user:', error);
         res.status(500).send('Internal Server Error');
@@ -47,8 +50,47 @@ router.post('/register', async (req, res) => {
     }
 });
 
+router.get('/login', async (req, res) => {
+    const prisma = new PrismaClient();
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                username: req.body.username
+            }
+        });
 
-router.get('/login', (req, res) => {
+        if (!user) {
+            return res.status(400).send('User does not exist');
+        }
+
+        bcrypt.compare(req.body.password, user.password, (err, result) => {
+            if (err) {
+                return res.status(401).send('Unauthorized');
+            }
+            if (result) {
+                console.log('User logged in');
+            } else {
+                return res.status(401).send('Unauthorized');
+            }
+        })
+
+        const jwtSecretKey = process.env.JWT_SECRET_KEY;
+        const data = {
+            username: user.username
+        };
+        const token = jwt.sign(data, jwtSecretKey);
+        return res.json({token, user});
+
+    } catch (error) {
+        console.error('Error logging in user:', error);
+        res.status(500).send('Internal Server Error');
+    } finally {
+        await prisma.$disconnect();
+    }
+})
+
+
+router.get('/validate', (req, res) => {
 
     let jwtSecretKey = process.env.JWT_SECRET_KEY;
 
