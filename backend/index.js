@@ -1,31 +1,21 @@
-// import { PrismaClient } from "@prisma/client";
-
-// const prisma = new PrismaClient();
-
-// async function main() {
-//       const users = await prisma.user.findMany()
-//       console.log(users)
-// }
-
-// main()
-//   .then(async () => {
-//     await prisma.$disconnect()
-//   })
-//   .catch(async (e) => {
-//     console.error(e)
-//     await prisma.$disconnect()
-//     process.exit(1)
-//   })
-
 import express from 'express';
 import dotenv from 'dotenv';
 import authRouter from './auth/auth.js';
+import { authenticateJWT } from './controllers/auth.js';
+import {groupRouter} from './routes/group.js';
+import {messageRouter} from './routes/message.js';
+import {userRouter} from './routes/user.js';
 
 const app = express();
 
 app.use(express.json());
-app.use('/api/auth', authRouter);
+app.use(express.urlencoded({ extended: true }));
 
+//app.use('/api', authenticateJWT);
+app.use('/auth', authRouter);
+app.use('/api/group', authenticateJWT, groupRouter);
+app.use('/api/message', authenticateJWT, messageRouter);
+app.use('/api/user', authenticateJWT, userRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
