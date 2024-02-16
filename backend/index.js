@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 
 //app.use('/api', authenticateJWT);
 app.use('/auth', authRouter);
-app.use('/api/group', groupRouter);
-app.use('/api/message', messageRouter, authenticateJWT);
-app.use('/api/user', userRouter, authenticateJWT);
+app.use('/api/group', authenticateJWT, groupRouter);
+app.use('/api/message', authenticateJWT, messageRouter);
+app.use('/api/user', authenticateJWT, userRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World!');

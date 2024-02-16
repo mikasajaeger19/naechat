@@ -66,5 +66,28 @@ async function getGroup(req, res) {
     }  
 }
 
-export { createGroup, getAllGroups, getGroup };
+async function usersInGroup(req, res){
+    const prisma = new PrismaClient();
+    try {
+        const group = await prisma.group.findUnique({
+            where: {
+                id: parseInt(req.params.id)
+            },
+            include: {
+                users: true
+            }
+        });
+        return res.json(group.users);
+    } catch (error) {
+        console.error('Error getting users in group:', error);
+        return null;
+    }
+    finally{
+        prisma.$disconnect();
+    }  
+
+}
+
+
+export { createGroup, getAllGroups, getGroup, usersInGroup};
 

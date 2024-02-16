@@ -1,6 +1,6 @@
 import {Router} from 'express'
 import { PrismaClient } from '@prisma/client'
-import { createGroup, getAllGroups, getGroup } from '../controllers/group.js'
+import { createGroup, getAllGroups, getGroup, usersInGroup } from '../controllers/group.js'
 const groupRouter = Router()
 
 groupRouter.get('/allGroups', getAllGroups);
@@ -11,6 +11,10 @@ groupRouter.post('/create', (req, res) => {
 
 groupRouter.get('/get/:id', (req, res) => {
     getGroup(req, res);
+})
+
+groupRouter.get('/usersInGroup/:id', (req, res) => {
+    usersInGroup(req, res);
 })
 
 export {groupRouter}

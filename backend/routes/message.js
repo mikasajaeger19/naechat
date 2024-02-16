@@ -12,4 +12,8 @@ messageRouter.post('/create', (req, res) => {
     createMessage(req, res);
 })
 
+messageRouter.put('/update/:id', (req, res) => {
+    updateMessage(req, res, parseInt(req.params.id));
+})
+
 export { messageRouter}

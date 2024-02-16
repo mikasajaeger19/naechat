@@ -72,4 +72,26 @@ const updateUser = async (req, res, id) => {
     }
 }
 
-export { viewUser, createUser, updateUser, viewAllUsers };
+const userGroups = async (req, res) => {
+    const prisma = new PrismaClient();
+    try {
+        const groups = await prisma.group.findMany({
+            where: {
+                users: {
+                    some: {
+                        id: parseInt(req.params.id)
+                    }
+                }
+            }
+        });
+        return res.json(groups);
+    } catch (error) {
+        console.error('Error getting groups:', error);
+        return null;
+    }
+    finally{
+        prisma.$disconnect();
+    }
+}
+
+export { viewUser, createUser, updateUser, viewAllUsers, userGroups };

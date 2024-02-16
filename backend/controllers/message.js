@@ -51,4 +51,25 @@ async function createMessage(req, res) {
     }
 }
 
-export { getMessages, createMessage };
+async function editMessage(req, res) {
+    const prisma = new PrismaClient();
+    try {
+        const message = await prisma.message.update({
+            where: {
+                id: parseInt(req.params.id)
+            },
+            data: {
+                text: req.body.text
+            }
+        });
+        return res.json(message);
+    } catch (error) {
+        console.error('Error updating message:', error);
+        return null;
+    }
+    finally {
+        prisma.$disconnect();
+    }
+}
+
+export { getMessages, createMessage, editMessage};
