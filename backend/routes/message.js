@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import express from 'express';
-import { createMessage, getMessages } from '../controllers/message.js'
+import { createMessage, editMessage, getMessages } from '../controllers/message.js'
 
 const messageRouter = express.Router();
 
@@ -13,7 +13,7 @@ messageRouter.post('/create', (req, res) => {
 })
 
 messageRouter.put('/update/:id', (req, res) => {
-    updateMessage(req, res, parseInt(req.params.id));
+    editMessage(req, res, parseInt(req.params.id));
 })
 
 export { messageRouter}
