@@ -1,0 +1,92 @@
+/* Global styles */
+.landing {
+  font-family: "EB Garamond", serif; /* Ensure consistent font across elements */
+  color: #F9C8A3; /* Define default text color */
+  margin: 0; /* Remove default browser margins */
+  padding: 0; /* Remove default browser padding */
+  height: 100vh; /* Fill viewport height */
+  display: flex; /* Use flexbox for vertical layout */
+  flex-direction: column;
+  justify-content: space-evenly; /* Distribute content vertically */
+  background-color: #BD6C85; /* Set background color for entire page */
+  align-items: center;
+}
+
+.signin {
+  background-color: #BD6C85;
+  border: none;
+  color: #F9C8A3;
+  font-family: "EB Garamond", serif;
+  width: 30vw;
+  font-size: 15px;
+}
+
+.signin p:hover, .new_here:hover {
+  transform: scale(1.1);
+  animation: big 0.5s ease-out;
+}
+
+@keyframes big {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+
+.signin_container {
+  width: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #BD6C85;
+  margin-right: 6vw;
+  
+}
+
+.naechat {
+  font-size: 120px;
+  text-align: center;
+}
+
+.new_here {
+  background-color: #BD6C85;
+  border: none;
+  color: #F9C8A3;
+  font-family: "EB Garamond", serif;
+  font-size: 15px;
+}
+
+.username_input, .password_input {
+  background-color: #BD6C85;
+  border: none;
+  color: #F9C8A3;
+  font-family: "EB Garamond", serif;
+}
+
+.username_input::placeholder, .password_input::placeholder {
+  color: #F9C8A3;
+  font-size: 15px;
+}
+
+.username_input:focus, .password_input:focus{
+  background-color: #BD6C85;
+  border: none;
+  outline: none;
+  color: #F9C8A3;
+  font-family: "EB Garamond", serif;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #BD6C85;
+}
+
+
+

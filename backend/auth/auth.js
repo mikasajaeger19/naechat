@@ -50,7 +50,8 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.get('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
+    console.log("this is the input", req.body)
     const prisma = new PrismaClient();
     try {
         const user = await prisma.user.findUnique({
