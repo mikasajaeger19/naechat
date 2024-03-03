@@ -94,4 +94,6 @@ const userGroups = async (req, res) => {
     }
 }
 
+
+
 export { viewUser, createUser, updateUser, viewAllUsers, userGroups };

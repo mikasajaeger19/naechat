@@ -1,0 +1,27 @@
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 100vw;
+}
+
+.navbar > a {
+    text-decoration: none;
+    color: #F9C8A3;
+    font-family: "EB Garamond", serif;
+    font-size: 20px;
+}
+
+.navbar > a:hover {
+    color: #F9C8A3;
+    animation: big 0.5s;
+}
+  
+  @keyframes big {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }

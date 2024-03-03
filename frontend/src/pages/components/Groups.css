@@ -1,0 +1,49 @@
+.chats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5vh; /* Adjusted margin */
+    margin-right: 5vw;
+}
+
+.chats > button {
+    background-color: #BD6C85;
+    border: none;
+    color: #F9C8A3;
+    font-family: "EB Garamond", serif;
+    font-size: 15px;
+    margin-top: 8px;
+    margin-left: 15px;
+    height: 14vh;
+}
+
+.grouplist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left; /* Adjusted margin */
+    padding: 0; /* Reset padding */
+}
+
+.grouplist > li {
+    list-style-type: none;
+    background-color:#BD6C85 ;
+    border: none;
+    color: #F9C8A3;
+    font-family: "EB Garamond", serif;
+    font-size: 18px;
+    margin-top: 8px;
+    height: vh;
+    font-family: EB Garamond;
+}
+
+.groups {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left; /* Adjusted margin */
+    padding: 0; /* Reset padding */
+    margin-bottom: 40vh;
+    margin-right: 3vh;
+}

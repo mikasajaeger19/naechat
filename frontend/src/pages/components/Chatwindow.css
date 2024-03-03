@@ -1,0 +1,97 @@
+.send {
+    background-color: #f9c8a3;
+    border: none;
+    color: #BD6C85;
+    font-family: "EB Garamond", serif;
+    font-size: 15px;
+    text-align: right;
+    visibility: hidden;
+  }
+  
+  .message_input {
+    background-color: #BD6C85;
+    border: none;
+    color: #F9C8A3;
+    font-family: "EB Garamond", serif;
+    width: 98%;
+    margin-left: 0.7%;
+    height: 9vh;
+    border-radius: 5px;
+  }
+  
+  .message_input::placeholder{
+    color: #F9C8A3;
+    font-family: "EB Garamond", serif;
+    font-size: 15px;
+    margin-left: 10%;
+  }
+  
+  .message_input:focus{
+    background-color: #BD6C85;
+    border: none;
+    outline: none;
+    color: #F9C8A3;
+    font-family: "EB Garamond", serif;
+  }
+  
+  .window {
+    display: flex;
+    flex-direction: column;
+    height: 63.5vh;
+    width: 50vw;
+    background-color: #F9C8A3;
+    border-radius: 5px;
+    max-height: 100%;
+  }
+  
+  .chat_input {
+   position: absolute;
+   bottom: 10%;
+   width: 50%;
+  }
+
+  .chatarea {
+    height: 75%;
+    display: flex;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+  
+
+
+.chat_username {
+ /* Make username bold */
+  margin-right: 5px; /* Add some space between username and message */
+  font-family: "EB Garamond", serif;
+  font-size: 10px;
+  color: #BD6C85;
+  margin-left: 2px;
+}
+
+.chat_message {
+  display: inline-block;
+  background-color: #BD6C85;
+  border-radius: 15px;
+  padding: 5px 30px; /* Add padding to the message */
+  color: #F9C8A3;
+  font-family: "EB Garamond", serif;
+  font-size: 16px;
+  max-width: 90%; /* Limit message width */
+}
+
+.chatlist {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mine {
+  align-self: flex-end;
+  margin-right: 1%;
+}
+
+
+.yours{
+  align-self: flex-start;
+  margin-left: -5%;
+}

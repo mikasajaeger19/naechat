@@ -15,9 +15,12 @@ app.use(cors());
 
 //app.use('/api', authenticateJWT);
 app.use('/auth', authRouter);
-app.use('/api/group', authenticateJWT, groupRouter);
-app.use('/api/message', authenticateJWT, messageRouter);
-app.use('/api/user', authenticateJWT, userRouter);
+// app.use('/api/group', authenticateJWT, groupRouter);
+// app.use('/api/message', authenticateJWT, messageRouter);
+// app.use('/api/user', authenticateJWT, userRouter);
+app.use('/api/group', groupRouter);
+app.use('/api/message', messageRouter);
+app.use('/api/user', userRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
